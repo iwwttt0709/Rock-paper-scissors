@@ -1,3 +1,5 @@
+let humanScore = 0, computerScore = 0, humanChoise = "", computerChoise = "", roundGame = 1;
+
 function getComputerChoice(maxFromCom) {
     if ((Math.floor(Math.random() * maxFromCom)) == 0) {
     return "Rock";
@@ -11,17 +13,92 @@ function getComputerChoice(maxFromCom) {
 }
 
 
-function getHumanChoice(maxFromHuman) {
-    if ((Math.floor(Math.random() * maxFromHuman)) == 0) {
-    return "Rock";
+
+function getHumanChoice() {
+    humanChoise = prompt("Input your choise: [Rock,Paper,Scissors]", )
+    return humanChoise;
+}
+
+
+
+function playRound() {
+    computerChoise = getComputerChoice(3)
+    humanChoise = getHumanChoice()
+    if (computerChoise == "Rock") {
+        if (humanChoise == "Rock") {
+            console.log("Draw!!")
+        }
+        else if (humanChoise == "Paper") {
+            console.log("Human win!!")
+            humanScore++;
+        }
+        else if (humanChoise == "Scissors") {
+            console.log("Computer win!!")
+            computerScore++;
+        }
+        else {
+            console.log("Error!!!")
+        }
     }
-    else if ((Math.floor(Math.random() * maxFromHuman)) == 1) {
-    return "Paper";
+    else if (computerChoise == "Paper") {
+        if (humanChoise == "Rock") {
+            console.log("Computer win!!")
+            computerScore++;
+        }
+        else if (humanChoise == "Paper") {
+            console.log("Draw!!")
+        }
+        else if (humanChoise == "Scissors") {
+            console.log("Human win!!")
+            humanScore++;
+        }
+        else {
+            console.log("Error!!!")
+        }
+    }
+    else if (computerChoise == "Scissors") {
+        if (humanChoise == "Rock") {
+            console.log("Computer win!!")
+            computerScore++;
+        }
+        else if (humanChoise == "Paper") {
+            console.log("Draw!!")
+        }
+        else if (humanChoise == "Scissors") {
+            console.log("Human win!!")
+            humanScore++;
+        }
+        else {
+            console.log("Error!!!")
+        }
     }
     else {
-    return "Scissors";
+        return;
     }
 }
 
-console.log("Computer choice: " + getComputerChoice(3));
-console.log("Human choice: " + prompt("Input your choise: ", ))
+function playGame() {
+    roundGame = prompt("How many rounds do you want to play?: ", 1);
+    for (let i = 1; i <= roundGame; i++) {
+        console.log("Round " + String(i))
+        playRound()
+        console.log("Human choice: " + humanChoise)
+        console.log("Human score: " + humanScore)
+        console.log("Computer choice: " + computerChoise);
+        console.log("Computer score: " + computerScore)
+    }
+    if (computerScore > humanScore) {
+        console.log("Result: Computer Win!")
+        console.log(String(computerScore) + " : " + String(humanScore))
+    }
+    else if (computerScore < humanScore) {
+        console.log("Result: Human Win!")
+        console.log(String(humanScore) + " : " + String(computerScore))
+    }
+    else {
+        console.log("Result: Draw!")
+        console.log(String(humanScore) + " : " + String(computerScore))
+    }
+}
+
+playGame()
