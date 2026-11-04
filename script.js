@@ -16,6 +16,7 @@ function getComputerChoice(maxFromCom) {
 
 function getHumanChoice() {
     humanChoise = prompt("Input your choise: [Rock,Paper,Scissors]", )
+    humanChoise = humanChoise.toLowerCase();
     return humanChoise;
 }
 
@@ -25,14 +26,14 @@ function playRound() {
     computerChoise = getComputerChoice(3)
     humanChoise = getHumanChoice()
     if (computerChoise == "Rock") {
-        if (humanChoise == "Rock") {
+        if (humanChoise == "rock") {
             console.log("Draw!!")
         }
-        else if (humanChoise == "Paper") {
+        else if (humanChoise == "paper") {
             console.log("Human win!!")
             humanScore++;
         }
-        else if (humanChoise == "Scissors") {
+        else if (humanChoise == "scissors") {
             console.log("Computer win!!")
             computerScore++;
         }
@@ -41,14 +42,14 @@ function playRound() {
         }
     }
     else if (computerChoise == "Paper") {
-        if (humanChoise == "Rock") {
+        if (humanChoise == "rock") {
             console.log("Computer win!!")
             computerScore++;
         }
-        else if (humanChoise == "Paper") {
+        else if (humanChoise == "paper") {
             console.log("Draw!!")
         }
-        else if (humanChoise == "Scissors") {
+        else if (humanChoise == "scissors") {
             console.log("Human win!!")
             humanScore++;
         }
@@ -57,14 +58,14 @@ function playRound() {
         }
     }
     else if (computerChoise == "Scissors") {
-        if (humanChoise == "Rock") {
+        if (humanChoise == "rock") {
             console.log("Computer win!!")
             computerScore++;
         }
-        else if (humanChoise == "Paper") {
+        else if (humanChoise == "paper") {
             console.log("Draw!!")
         }
-        else if (humanChoise == "Scissors") {
+        else if (humanChoise == "scissors") {
             console.log("Human win!!")
             humanScore++;
         }
