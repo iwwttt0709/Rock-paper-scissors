@@ -102,4 +102,4 @@ function playGame() {
     }
 }
 
-playGame()
+
