@@ -1,39 +1,56 @@
-let humanScore = 0, computerScore = 0, humanChoise = "", computerChoise = "", roundGame = 1;
+let humanScore = 0, computerScore = 0, humanChoice = "", computerChoice = "", roundGame = 1;
 
 function getComputerChoice(maxFromCom) {
     if ((Math.floor(Math.random() * maxFromCom)) == 0) {
-    return "Rock";
+    return rock;
     }
     else if ((Math.floor(Math.random() * maxFromCom)) == 1) {
-    return "Paper";
+    return paper;
     }
     else {
-    return "Scissors";
+    return scissors;
     }
 }
 
 
+const rockChoice = document.getElementById('rock')
+    , paperChoice = document.getElementById('paper')
+    , scissorsChoice = document.getElementById('scissors')
+    , rock = "rock"
+    , paper = "paper"
+    , scissors = "scissors";
 
-function getHumanChoice() {
-    humanChoise = prompt("Input your choise: [Rock,Paper,Scissors]", )
-    humanChoise = humanChoise.toLowerCase();
-    return humanChoise;
+
+function getHumanChoice(choice) {
+    if (choice === rock) {
+        humanChoice = rock;
+    }else if (choice === paper) {
+        humanChoice = paper;
+    }else if (choice === scissors){
+        humanChoice = scissors;
+    }else {
+        return 0;
+    }
+    console.log(`Human choice is ${humanChoice}`)
+    return humanChoice;
 }
 
 
 
 function playRound() {
-    computerChoise = getComputerChoice(3)
-    humanChoise = getHumanChoice()
-    if (computerChoise == "Rock") {
-        if (humanChoise == "rock") {
+    computerChoice = getComputerChoice(3)
+    rockChoice.addEventListener("click", () => getHumanChoice(rock));
+    paperChoice.addEventListener("click", () => getHumanChoice(paper));
+    scissorsChoice.addEventListener("click", () => getHumanChoice(scissors));
+    if (computerChoice === rock) {
+        if (humanChoice === rock) {
             console.log("Draw!!")
         }
-        else if (humanChoise == "paper") {
+        else if (humanChoice === paper) {
             console.log("Human win!!")
             humanScore++;
         }
-        else if (humanChoise == "scissors") {
+        else if (humanChoice === scissors) {
             console.log("Computer win!!")
             computerScore++;
         }
@@ -41,15 +58,15 @@ function playRound() {
             console.log("Error!!!")
         }
     }
-    else if (computerChoise == "Paper") {
-        if (humanChoise == "rock") {
+    else if (computerChoice === paper) {
+        if (humanChoice === rock) {
             console.log("Computer win!!")
             computerScore++;
         }
-        else if (humanChoise == "paper") {
+        else if (humanChoice === paper) {
             console.log("Draw!!")
         }
-        else if (humanChoise == "scissors") {
+        else if (humanChoice === scissors) {
             console.log("Human win!!")
             humanScore++;
         }
@@ -57,15 +74,15 @@ function playRound() {
             console.log("Error!!!")
         }
     }
-    else if (computerChoise == "Scissors") {
-        if (humanChoise == "rock") {
+    else if (computerChoice === scissors) {
+        if (humanChoice === rock) {
             console.log("Computer win!!")
             computerScore++;
         }
-        else if (humanChoise == "paper") {
+        else if (humanChoice === paper) {
             console.log("Draw!!")
         }
-        else if (humanChoise == "scissors") {
+        else if (humanChoice === scissors) {
             console.log("Human win!!")
             humanScore++;
         }
@@ -74,7 +91,7 @@ function playRound() {
         }
     }
     else {
-        return;
+        return 0;
     }
 }
 
@@ -83,9 +100,9 @@ function playGame() {
     for (let i = 1; i <= roundGame; i++) {
         console.log("Round " + String(i))
         playRound()
-        console.log("Human choice: " + humanChoise)
+        console.log("Human choice: " + humanChoice)
         console.log("Human score: " + humanScore)
-        console.log("Computer choice: " + computerChoise);
+        console.log("Computer choice: " + computerChoice);
         console.log("Computer score: " + computerScore)
     }
     if (computerScore > humanScore) {
@@ -102,4 +119,4 @@ function playGame() {
     }
 }
 
-
+playGame()
